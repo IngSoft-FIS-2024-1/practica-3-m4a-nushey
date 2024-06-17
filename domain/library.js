@@ -11,12 +11,12 @@ class Library {
   }
 
   setName(name) {
-    if (typeof (name) !== "string") {
-      throw new Error()
+    if (typeof (name) !== 'string') {
+      throw new Error();
     }
     name = name.trim();
     if (name.length === 0) {
-      throw new Error()
+      throw new Error();
     }
     this.#name = name;
   }
@@ -27,7 +27,7 @@ class Library {
 
   addBook(title, author, pages, words) {
     // Se contempla caso donde words no fue cargado
-    if (words === "") {
+    if (words === '') {
       words = 1;
     }
     else{

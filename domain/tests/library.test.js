@@ -59,7 +59,7 @@ describe('Library', () => {
     expect(inventory[1].getTitle()).toBe('El Hombre que Calculaba');
   });
   it('add a book to the library without words', () => {
-    myLibrary.addBook('Cuentos de la Selva', 'Horacio Quiroga', 120, "");
+    myLibrary.addBook('Cuentos de la Selva', 'Horacio Quiroga', 120, '');
     const aBook = myLibrary.getInventory()[myLibrary.getInventory().length - 1];
     expect(aBook).toBeInstanceOf(Book);
     expect(aBook.getTitle()).toBe('Cuentos de la Selva');
