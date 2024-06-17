@@ -2,6 +2,7 @@ import Library from './domain/library.js';
 
 const libraryName = document.getElementById('library-name');
 const inpTotalBooks = document.getElementById('inp-total-books');
+const inpTotalWords = document.getElementById('inp-total-words');
 const btnAdd = document.getElementById('btn-add');
 const inpTitle = document.getElementById('inp-title');
 const inpAuthor = document.getElementById('inp-author');
@@ -14,6 +15,11 @@ libraryName.innerHTML = myLibrary.getName();
 function updateTotalBooks() {
   inpTotalBooks.value = myLibrary.totalBooks();
 }
+
+function updateTotalWords() {
+  inpTotalWords.value = myLibrary.totalWords();
+}
+
 
 function updateInventory() {
   const emptyBookList = document.getElementById('empty-book-list');
@@ -39,6 +45,7 @@ btnAdd.addEventListener('click', () => {
     bookErrorContainer.classList.add('d-none');
     updateInventory();
     updateTotalBooks();
+    updateTotalWords();
   }
   catch (error) {
     bookErrorContainer.classList.remove('d-none');
