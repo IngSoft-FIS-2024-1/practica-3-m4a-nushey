@@ -10,15 +10,15 @@ describe('Library', () => {
   });
 
   it('add a book to the library', () => {
-    myLibrary.addBook('Cuentos de la Selva', 'Horacio Quiroga', 120);
+    myLibrary.addBook('Cuentos de la Selva', 'Horacio Quiroga', 120, 1000);
     const aBook = myLibrary.getInventory()[myLibrary.getInventory().length - 1];
     expect(aBook).toBeInstanceOf(Book);
     expect(aBook.getTitle()).toBe('Cuentos de la Selva');
   });
 
   it('return the total number of books', () => {
-    myLibrary.addBook('Cuentos de la Selva', 'Horacio Quiroga', 120);
-    myLibrary.addBook('El Hombre que Calculaba', 'Malba Tahan', 286);
+    myLibrary.addBook('Cuentos de la Selva', 'Horacio Quiroga', 120, 1000);
+    myLibrary.addBook('El Hombre que Calculaba', 'Malba Tahan', 286, 1000);
     expect(myLibrary.totalBooks()).toBe(2);
   });
 
@@ -31,7 +31,38 @@ describe('Library', () => {
     expect(() => myLibrary.setName(123)).toThrow();
   });
   it('throw an error when setting an empty name', () => {
-    // TODO
+    expect(() => myLibrary.setName('')).toThrow();
+  });
+
+  it('book was added to the inventory', () => {
+    myLibrary.addBook('Cuentos de la Selva', 'Horacio Quiroga', 120, 1500);
+    expect(myLibrary.totalBooks()).toBe(1);
+  });
+
+  it('totalBooks()', () => {
+    myLibrary.addBook('Cuentos de la Selva', 'Horacio Quiroga', 120, 1500);
+    myLibrary.addBook('El Hombre que Calculaba', 'Malba Tahan', 286, 2000);
+    expect(myLibrary.totalBooks()).toBe(2);
+  });
+
+  it('totalWords()', () => {
+    myLibrary.addBook('Cuentos de la Selva', 'Horacio Quiroga', 120, 1500);
+    myLibrary.addBook('El Hombre que Calculaba', 'Malba Tahan', 286, 2000);
+    expect(myLibrary.totalWords()).toBe(3500);
+  });
+
+  it('getInventory()', () => {
+    myLibrary.addBook('Cuentos de la Selva', 'Horacio Quiroga', 120, 1500);
+    myLibrary.addBook('El Hombre que Calculaba', 'Malba Tahan', 286, 2000);
+    const inventory = myLibrary.getInventory();
+    expect(inventory[0].getTitle()).toBe('Cuentos de la Selva');
+    expect(inventory[1].getTitle()).toBe('El Hombre que Calculaba');
+  });
+  it('add a book to the library without words', () => {
+    myLibrary.addBook('Cuentos de la Selva', 'Horacio Quiroga', 120, "");
+    const aBook = myLibrary.getInventory()[myLibrary.getInventory().length - 1];
+    expect(aBook).toBeInstanceOf(Book);
+    expect(aBook.getTitle()).toBe('Cuentos de la Selva');
   });
 
 });
