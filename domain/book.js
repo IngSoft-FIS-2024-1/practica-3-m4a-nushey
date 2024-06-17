@@ -5,11 +5,10 @@ class Book {
   #pages;
   #words;
   
-  constructor(title, author, pages, words) {
+  constructor(title, author, pages) {
     this.setTitle(title);
     this.setAuthor(author);
     this.setPages(pages);
-    this.setWords(words);
   }
 
   getTitle() {
@@ -78,7 +77,13 @@ class Book {
   }
 
   toString() {
-    return `Título: ${this.#title} Autor: ${this.#author} Páginas: ${this.#pages} Palabras: ${this.#words}`;
+    let result;
+    if (isNaN(this.#words)) {
+      result = `Título: ${this.#title} Autor: ${this.#author} Páginas: ${this.#pages}`;
+    } else {
+      result = `Título: ${this.#title} Autor: ${this.#author} Páginas: ${this.#pages} Palabras: ${this.#words}`;
+    }
+    return result;
   }
 }
 

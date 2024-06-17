@@ -26,14 +26,11 @@ class Library {
   }
 
   addBook(title, author, pages, words) {
-    // Se contempla caso donde words no fue cargado
-    if (words === '') {
-      words = 1;
+    const newBook = new Book(title, author, pages);
+    // Aqui se contempla que el usuario no haya cargado words.
+    if (words !== '') {
+      newBook.setWords(words);
     }
-    else{
-      words = parseInt(words);
-    }
-    const newBook = new Book(title, author, pages, words);
     this.#inventory.push(newBook);
   }
 
@@ -48,7 +45,7 @@ class Library {
   totalWords() {
     this.#totalWords = 0;
     this.#inventory.forEach(book => {
-      this.#totalWords += book.getWords();
+      if(!isNaN(book.getWords())) this.#totalWords += book.getWords();
     });
     return this.#totalWords;
   }

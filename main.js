@@ -40,7 +40,7 @@ btnAdd.addEventListener('click', () => {
   const bookErrorContainer = document.getElementById('add-book-error');
   const bookError = document.getElementById('add-book-error-msg');
   try {
-    myLibrary.addBook(inpTitle.value, inpAuthor.value, parseInt(inpPages.value), inpWords.value);
+    myLibrary.addBook(inpTitle.value, inpAuthor.value, parseInt(inpPages.value), parseInt(inpWords.value));
     clearInputs();
     bookErrorContainer.classList.add('d-none');
     updateInventory();
